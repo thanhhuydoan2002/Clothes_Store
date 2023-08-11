@@ -4,4 +4,7 @@
     <string name="enter_password">Nhập mật khẩu</string>
     <string name="register_now">Chưa có tài khoản ? Đăng ký ngay</string>
     <string name="login">Đăng nhập</string>
+    <string name="enter_name">Nhập tên của bạn</string>
+    <string name="register">Đăng ký</string>
+    <string name="login_now">Đã có tài khoản ? Đăng nhập ngay</string>
 </resources>

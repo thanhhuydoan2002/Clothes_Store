@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Tools_Store_App</string>
+    <string name="enter_email">Nhập Email</string>
+    <string name="enter_password">Nhập mật khẩu</string>
+    <string name="register_now">Chưa có tài khoản ? Đăng ký ngay</string>
+    <string name="login">Đăng nhập</string>
 </resources>

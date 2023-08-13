@@ -1,7 +1,5 @@
 package com.example.tools_store_app
 
-
-
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -11,7 +9,7 @@ import com.example.tools_store_app.Extensions.toast
 import com.example.tools_store_app.databinding.RegisterFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class SignUpFragment : Fragment(R.layout.register_fragment) {
+class RegisterFragment : Fragment(R.layout.register_fragment) {
 
     private lateinit var binding: RegisterFragmentBinding
     private lateinit var auth : FirebaseAuth
@@ -23,9 +21,6 @@ class SignUpFragment : Fragment(R.layout.register_fragment) {
 
         binding = RegisterFragmentBinding.bind(view)
         auth = FirebaseAuth.getInstance()
-
-
-
 
 
 
@@ -54,7 +49,7 @@ class SignUpFragment : Fragment(R.layout.register_fragment) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {task ->
                 if(task.isSuccessful){
-                    requireActivity().toast("New User created")
+                    requireActivity().toast("Đăng ký tài khoản thành công")
 
                     Navigation.findNavController(requireView())
                         .navigate(R.id.action_registerFragment_to_mainFragment)

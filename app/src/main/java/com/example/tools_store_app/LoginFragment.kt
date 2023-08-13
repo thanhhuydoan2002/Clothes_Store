@@ -42,7 +42,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
 
             } else {
-                requireActivity().toast("Some Fields are Empty")
+                requireActivity().toast("Email và mật khẩu không được bỏ trống")
             }
         }
 
@@ -62,7 +62,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
                 if (task.isSuccessful) {
 
-                    requireActivity().toast("Sign In Successful")
+                    requireActivity().toast("Đăng nhập thành công")
 
                     Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
                         .navigate(R.id.action_loginFragment_to_mainFragment)

@@ -43,7 +43,7 @@ class MainFragment : Fragment(R.layout.main_fragment),
         binding = MainFragmentBinding.bind(view)
         categoryList = ArrayList()
         productList = ArrayList()
-        databaseReference = FirebaseDatabase.getInstance().getReference("products")
+        databaseReference = FirebaseDatabase.getInstance("https://tools-store-app-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("products")
         auth = FirebaseAuth.getInstance()
 
 

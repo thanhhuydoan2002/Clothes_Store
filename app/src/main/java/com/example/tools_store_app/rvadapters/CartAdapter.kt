@@ -43,7 +43,7 @@ class CartAdapter(
 
 
         holder.binding.tvCartProductName.text = currentItem.name
-        holder.binding.tvCartProductPrice.text = "VND${currentItem.price}"
+        holder.binding.tvCartProductPrice.text = "${currentItem.price}VND"
         holder.binding.tvCartItemCount.text = currentItem.quantity.toString()
         holder.binding.tvCartProductSize.text = currentItem.size
 

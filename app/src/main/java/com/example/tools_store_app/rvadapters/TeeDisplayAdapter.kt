@@ -31,7 +31,7 @@ class TeeDisplayAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = list[position]
         holder.binding.tvNameTeeDisplayItem.text = "${currentItem.brand} ${currentItem.name}"
-        holder.binding.tvPriceTeeDisplayItem.text = "VND${currentItem.price}"
+        holder.binding.tvPriceTeeDisplayItem.text = "${currentItem.price}VND"
 
 
         Glide

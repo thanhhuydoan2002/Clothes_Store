@@ -24,7 +24,7 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
     private lateinit var auth: FirebaseAuth
     private lateinit var adapter: CartAdapter
     private var subTotalPrice = 0
-    private var totalPrice = 240
+    private var totalPrice = 0
 
     private var orderDatabaseReference = Firebase.firestore.collection("orders")
 

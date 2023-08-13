@@ -32,7 +32,7 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
                 binding.etPasswordRegister.text.isNotEmpty()
             ) {
 
-                createUser(binding.etEmailRegister.text.toString(),binding.etNameRegister.text.toString())
+                createUser(binding.etEmailRegister.text.toString(),binding.etPasswordRegister.text.toString())
 
 
             }

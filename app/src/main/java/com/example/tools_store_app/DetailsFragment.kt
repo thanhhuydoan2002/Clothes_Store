@@ -44,7 +44,7 @@ class DetailsFragment : Fragment(R.layout.product_details_fragment), SizeOnClick
         super.onViewCreated(view, savedInstanceState)
         binding = ProductDetailsFragmentBinding.bind(view)
 
-        productDatabaseReference = FirebaseDatabase.getInstance().getReference("products")
+        productDatabaseReference = FirebaseDatabase.getInstance("https://tools-store-app-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("products")
 
         val productId = args.productId
         auth = FirebaseAuth.getInstance()
@@ -75,7 +75,7 @@ class DetailsFragment : Fragment(R.layout.product_details_fragment), SizeOnClick
                             orderName = products.name!!
                             orderPrice = products.price!!
 
-                            binding.tvDetailsProductPrice.text = "VND${products.price}"
+                            binding.tvDetailsProductPrice.text = "${products.price}VND"
                             binding.tvDetailsProductName.text = "${products.brand} ${products.name}"
                             binding.tvDetailsProductDescription.text = products.description
                         }

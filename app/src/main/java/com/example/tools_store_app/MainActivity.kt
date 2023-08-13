@@ -1,3 +1,5 @@
+package com.example.tools_store_app
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat

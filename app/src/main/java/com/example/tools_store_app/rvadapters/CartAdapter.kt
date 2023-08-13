@@ -1,9 +1,8 @@
-package com.example.shoeapp.rvadapters
+package com.example.tools_store_app.rvadapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tools_store_app.Models.CartModel

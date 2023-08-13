@@ -1,5 +1,6 @@
 package com.example.tools_store_app.rvadapters
 
+import com.example.tools_store_app.Models.TeeDisplayModel
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -7,15 +8,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.tools_store_app.Models.LikeModel
 import com.example.tools_store_app.databinding.MainDisplayItemBinding
 
-class LikeAdapter(
-    private val context: Context,
-    private val list: ArrayList<LikeModel>,
-    private val productClickInterface: LikedProductOnClickInterface,
-    private val likeClickInterface: LikedOnClickInterface,
-):RecyclerView.Adapter<LikeAdapter.ViewHolder>() {
+class TeeDisplayAdapter(
+    private val context:Context,
+    private val list: List<TeeDisplayModel>,
+    private val productClickInterface: ProductOnClickInterface,
+    private val likeClickInterface: LikeOnClickInterface,
+
+    ) : RecyclerView.Adapter<TeeDisplayAdapter.ViewHolder>() {
 
 
     inner class ViewHolder(val binding: MainDisplayItemBinding) :
@@ -31,7 +32,6 @@ class LikeAdapter(
         val currentItem = list[position]
         holder.binding.tvNameTeeDisplayItem.text = "${currentItem.brand} ${currentItem.name}"
         holder.binding.tvPriceTeeDisplayItem.text = "VND${currentItem.price}"
-        holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.RED)
 
 
         Glide
@@ -45,10 +45,14 @@ class LikeAdapter(
         }
 
         holder.binding.btnLike.setOnClickListener {
-            likeClickInterface.onClickLike(currentItem)
-            holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.WHITE)
+            if(holder.binding.btnLike.isChecked){
+                holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.RED)
+                likeClickInterface.onClickLike(currentItem)
+            }
+            else{
+                holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.WHITE)
+            }
 
-            likeClickInterface.onClickLike(currentItem)
         }
 
     }
@@ -60,10 +64,10 @@ class LikeAdapter(
 
 }
 
-interface LikedProductOnClickInterface {
-    fun onClickProduct(item: LikeModel)
+interface ProductOnClickInterface {
+    fun onClickProduct(item: TeeDisplayModel)
 }
 
-interface LikedOnClickInterface{
-    fun onClickLike(item: LikeModel)
+interface LikeOnClickInterface{
+    fun onClickLike(item :TeeDisplayModel)
 }

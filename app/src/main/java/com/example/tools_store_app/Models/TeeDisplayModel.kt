@@ -1,6 +1,6 @@
 package com.example.tools_store_app.Models
 
-data class ShoeDisplayModel(
+data class TeeDisplayModel(
 
     val brand: String? = null,
     val description: String? = null,

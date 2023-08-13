@@ -16,7 +16,7 @@
 
         <ImageView
             android:padding="10dp"
-            android:id="@+id/ivShoeDisplayItem"
+            android:id="@+id/ivTeeDisplayItem"
             android:background="@drawable/custom_image_background"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -29,23 +29,23 @@
 
 
     <TextView
-        android:id="@+id/tvNameShoeDisplayItem"
+        android:id="@+id/tvNameTeeDisplayItem"
         style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Product Name"
-        app:layout_constraintStart_toStartOf="@id/ivShoeDisplayItem"
-        app:layout_constraintTop_toBottomOf="@id/ivShoeDisplayItem"
+        android:text="Tên sản phẩm"
+        app:layout_constraintStart_toStartOf="@id/ivTeeDisplayItem"
+        app:layout_constraintTop_toBottomOf="@id/ivTeeDisplayItem"
         />
 
 
     <TextView
-        android:id="@+id/tvPriceShoeDisplayItem"
+        android:id="@+id/tvPriceTeeDisplayItem"
         style="@style/TextAppearance.MaterialComponents.Subtitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/tvNameShoeDisplayItem"
-        app:layout_constraintTop_toBottomOf="@id/tvNameShoeDisplayItem"
+        app:layout_constraintStart_toStartOf="@id/tvNameTeeDisplayItem"
+        app:layout_constraintTop_toBottomOf="@id/tvNameTeeDisplayItem"
         android:text="10000" />
 
 

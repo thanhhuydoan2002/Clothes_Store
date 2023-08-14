@@ -10,8 +10,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tools_store_app.rvadapters.CartAdapter
 import com.example.tools_store_app.databinding.CartFragmentBinding
+import com.example.tools_store_app.rvadapters.CartAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject

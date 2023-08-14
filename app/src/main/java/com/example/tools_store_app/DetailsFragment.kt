@@ -75,7 +75,7 @@ class DetailsFragment : Fragment(R.layout.product_details_fragment), SizeOnClick
                             orderName = products.name!!
                             orderPrice = products.price!!
 
-                            binding.tvDetailsProductPrice.text = "${products.price}VND"
+                            binding.tvDetailsProductPrice.text = "${products.price} VND"
                             binding.tvDetailsProductName.text = "${products.brand} ${products.name}"
                             binding.tvDetailsProductDescription.text = products.description
                         }

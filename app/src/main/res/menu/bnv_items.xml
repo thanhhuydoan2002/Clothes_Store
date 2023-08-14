@@ -5,24 +5,24 @@
         android:id="@+id/mainFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="HomePage" />
+        android:title="Trang chủ" />
 
     <item
         android:id="@+id/likeFragment"
         android:enabled="true"
         android:icon="@drawable/ic_heart_svgrepo_com"
-        android:title="LikePage" />
+        android:title="Yêu thích" />
 
     <item
         android:id="@+id/cartFragment"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="CartPage" />
+        android:title="Giỏ hàng" />
 
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/logout_svg"
-        android:title="ProfilePage" />
+        android:title="Trang cá nhân" />
 
 </menu>

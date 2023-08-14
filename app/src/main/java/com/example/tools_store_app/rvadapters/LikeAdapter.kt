@@ -30,7 +30,7 @@ class LikeAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = list[position]
         holder.binding.tvNameTeeDisplayItem.text = "${currentItem.brand} ${currentItem.name}"
-        holder.binding.tvPriceTeeDisplayItem.text = "${currentItem.price}VND"
+        holder.binding.tvPriceTeeDisplayItem.text = "${currentItem.price} VND"
         holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.RED)
 
 

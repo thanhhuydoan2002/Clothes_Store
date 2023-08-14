@@ -23,8 +23,12 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
     private lateinit var cartList: ArrayList<CartModel>
     private lateinit var auth: FirebaseAuth
     private lateinit var adapter: CartAdapter
+
+    //prices
     private var subTotalPrice = 0
     private var totalPrice = 0
+    private var shippingPrice = 15000
+
 
     private var orderDatabaseReference = Firebase.firestore.collection("orders")
 
@@ -88,8 +92,13 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
                     cartList.add(cartProduct)
                     subTotalPrice += cartProduct.price!!.toInt()
                     totalPrice += cartProduct.price!!.toInt()
-                    binding.tvLastSubTotalprice.text = subTotalPrice.toString()
-                    binding.tvLastTotalPrice.text = totalPrice.toString()
+
+                    totalPrice += shippingPrice
+
+                    //display prices
+                    binding.tvLastSubTotalprice.text = "${subTotalPrice.toString()} VND"
+                    binding.tvLastTotalPrice.text = "${totalPrice.toString()} VND"
+                    binding.tvShippingPrice.text = "${shippingPrice.toString()} VND"
                     binding.tvLastSubTotalItems.text = "Giá tiền của ${cartList.size} sản phẩm"
                     adapter.notifyDataSetChanged()
 
@@ -118,6 +127,8 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
                     orderDatabaseReference.document(item.id).delete()
                     cartList.removeAt(position)
                     adapter.notifyItemRemoved(position)
+
+
                     requireActivity().toast("Xóa thành công!!!")
                 }
 

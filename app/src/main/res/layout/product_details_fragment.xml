@@ -23,17 +23,16 @@
             app:title="Chi tiết sản phẩm"
             />
 
-
     </androidx.appcompat.widget.Toolbar>
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
 
         app:layout_constraintBottom_toTopOf="@id/llBottomDetails"
-        app:layout_constraintEnd_toEndOf="@id/detailToolbar"
-        app:layout_constraintStart_toStartOf="@id/detailToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detailToolbar"
 
         tools:ignore="SpeakableTextPresentCheck">
@@ -47,16 +46,16 @@
             <ImageView
                 android:id="@+id/ivDetails"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:layout_height="450dp"
+                android:importantForAccessibility="no"
                 android:scaleType="fitCenter"
                 android:src="@drawable/tee8"
                 app:layout_constraintBottom_toTopOf="@id/llBottomDetails"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                app:layout_constraintTop_toBottomOf="@id/detailToolbar" />
         </LinearLayout>
+
     </ScrollView>
 
     <LinearLayout
@@ -64,21 +63,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_bnv"
-        android:elevation="10dp"
         android:orientation="vertical"
-        android:padding="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="10dp"
+        android:padding="20dp"
 
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivDetails"
+        tools:ignore="NotSibling">
+
 
         <TextView
             android:id="@+id/tvDetailsProductName"
             style="@style/TextAppearance.MaterialComponents.Headline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Áo thun màu cam"
+            android:text="Áo thun màu cam Áo thun màu cam"
             android:textColor="@color/black"
             android:textStyle="bold" />
 

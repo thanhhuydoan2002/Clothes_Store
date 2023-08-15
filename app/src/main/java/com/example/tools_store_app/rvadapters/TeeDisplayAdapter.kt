@@ -4,6 +4,7 @@ import com.example.tools_store_app.Models.TeeDisplayModel
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +41,7 @@ class TeeDisplayAdapter(
             .into(holder.binding.ivTeeDisplayItem)
 
 
+        //OnClickProduct here
         holder.itemView.setOnClickListener {
             productClickInterface.onClickProduct(list[position])
         }

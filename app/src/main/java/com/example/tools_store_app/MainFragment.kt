@@ -62,11 +62,13 @@ class MainFragment : Fragment(R.layout.main_fragment),
 
         // region implements products Recycler view
 
+        //** List Products in Main Menu **
         val productLayoutManager = GridLayoutManager(context, 2)
         productsAdapter = TeeDisplayAdapter(requireContext(), productList, this,this)
         binding.rvMainProductsList.layoutManager = productLayoutManager
         binding.rvMainProductsList.adapter = productsAdapter
         setProductsData()
+
         // endregion implements products Recycler view
 
 

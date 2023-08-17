@@ -71,6 +71,13 @@ class LikeFragment(): Fragment(R.layout.liked_products_fragment), LikedProductOn
 
     override fun onClickProduct(item: LikeModel) {
 
+        val direction = LikeFragmentDirections
+            .actionLikeFragmentToDetailsFragment(
+                item.pid!!
+            )
+
+        Navigation.findNavController(requireView())
+            .navigate(direction)
     }
 
     override fun onClickLike(item: LikeModel) {

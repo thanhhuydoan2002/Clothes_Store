@@ -139,7 +139,7 @@
                 android:id="@+id/btnDetailsAddToCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="bottom"
                 android:background="@drawable/custom_button"
                 android:padding="5dp"
 

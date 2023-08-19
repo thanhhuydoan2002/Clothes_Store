@@ -1,6 +1,7 @@
 package com.example.tools_store_app
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -18,8 +19,10 @@ import com.example.tools_store_app.rvadapters.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.tasks.await
 
 class MainFragment : Fragment(R.layout.main_fragment),
     CategoryOnClickInterface,
@@ -32,6 +35,7 @@ class MainFragment : Fragment(R.layout.main_fragment),
     private lateinit var categoryList: ArrayList<String>
     private lateinit var productsAdapter: TeeDisplayAdapter
     private lateinit var categoryAdapter: MainCategoryAdapter
+
     private lateinit var auth: FirebaseAuth
     private var likeDBRef = Firebase.firestore.collection("LikedProducts")
 
@@ -228,14 +232,29 @@ class MainFragment : Fragment(R.layout.main_fragment),
     }
 
     override fun onClickLike(item: TeeDisplayModel) {
+        val newItem = LikeModel(item.id, auth.currentUser!!.uid, item.brand, item.description, item.imageUrl, item.name, item.price)
 
-        likeDBRef
-            .add(LikeModel(item.id , auth.currentUser!!.uid , item.brand , item.description , item.imageUrl , item.name ,item.price))
-            .addOnSuccessListener {
-                requireActivity().toast("Đã thêm vào mục yêu thích")
+        // Before adding, check if the ID already exists in the favorites list
+        val query = likeDBRef.whereEqualTo("pid", newItem.pid)
+
+        query.get()
+            .addOnSuccessListener { querySnapshot ->
+                if (querySnapshot.isEmpty) {
+                    // ID does not exist, perform add to collection
+                    likeDBRef.add(newItem)
+                        .addOnSuccessListener {
+                            requireActivity().toast("Đã thêm vào mục yêu thích")
+                        }
+                        .addOnFailureListener {
+                            requireActivity().toast("Thêm vào mục yêu thích thất bại")
+                        }
+                } else {
+                    // ID already exists, notify user
+                    requireActivity().toast("Sản phẩm đã tồn tại trong mục yêu thích")
+                }
             }
             .addOnFailureListener {
-                requireActivity().toast("Thêm vào mục yêu thích thất bại")
+                requireActivity().toast("Kiểm tra thất bại")
             }
 
     }

@@ -49,6 +49,7 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {task ->
                 if(task.isSuccessful){
+
                     requireActivity().toast("Đăng ký tài khoản thành công")
 
                     Navigation.findNavController(requireView())

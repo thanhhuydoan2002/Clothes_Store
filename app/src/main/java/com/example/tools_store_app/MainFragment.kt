@@ -24,8 +24,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
-class MainFragment : Fragment(R.layout.main_fragment),
-    CategoryOnClickInterface,
+class MainFragment : Fragment(R.layout.main_fragment), CategoryOnClickInterface,
     ProductOnClickInterface, LikeOnClickInterface {
 
 
@@ -36,9 +35,9 @@ class MainFragment : Fragment(R.layout.main_fragment),
     private lateinit var productsAdapter: TeeDisplayAdapter
     private lateinit var categoryAdapter: MainCategoryAdapter
 
+    //Firebase connection
     private lateinit var auth: FirebaseAuth
     private var likeDBRef = Firebase.firestore.collection("LikedProducts")
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,7 +46,9 @@ class MainFragment : Fragment(R.layout.main_fragment),
         binding = MainFragmentBinding.bind(view)
         categoryList = ArrayList()
         productList = ArrayList()
-        databaseReference = FirebaseDatabase.getInstance("https://tools-store-app-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("products")
+        databaseReference =
+            FirebaseDatabase.getInstance("https://tools-store-app-default-rtdb.asia-southeast1.firebasedatabase.app/")
+                .getReference("products")
         auth = FirebaseAuth.getInstance()
 
 
@@ -68,7 +69,7 @@ class MainFragment : Fragment(R.layout.main_fragment),
 
         //** List Products in Main Menu **
         val productLayoutManager = GridLayoutManager(context, 2)
-        productsAdapter = TeeDisplayAdapter(requireContext(), productList, this,this)
+        productsAdapter = TeeDisplayAdapter(requireContext(), productList, this, this)
         binding.rvMainProductsList.layoutManager = productLayoutManager
         binding.rvMainProductsList.adapter = productsAdapter
         setProductsData()
@@ -83,12 +84,14 @@ class MainFragment : Fragment(R.layout.main_fragment),
                         .navigate(R.id.action_mainFragment_self)
                     true
                 }
+
                 R.id.likeFragment -> {
 //                    requireActivity().toast("Like Page coming Soon")
                     Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
                         .navigate(R.id.action_mainFragment_to_likeFragment)
                     true
                 }
+
                 R.id.cartFragment -> {
 
                     Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
@@ -96,6 +99,7 @@ class MainFragment : Fragment(R.layout.main_fragment),
 
                     true
                 }
+
                 R.id.profileFragment -> {
 
                     auth.signOut()
@@ -103,6 +107,7 @@ class MainFragment : Fragment(R.layout.main_fragment),
                         .navigate(R.id.action_mainFragment_to_loginFragment)
                     true
                 }
+
                 else -> false
 
             }
@@ -127,10 +132,8 @@ class MainFragment : Fragment(R.layout.main_fragment),
                         categoryList.add(products!!.brand!!)
 
                     }
-
                     categoryAdapter.notifyDataSetChanged()
                 }
-
 
             }
 
@@ -140,11 +143,7 @@ class MainFragment : Fragment(R.layout.main_fragment),
 
         }
 
-
         databaseReference.addValueEventListener(valueEvent)
-
-
-
 
     }
 
@@ -220,45 +219,46 @@ class MainFragment : Fragment(R.layout.main_fragment),
 
     override fun onClickProduct(item: TeeDisplayModel) {
 
-        val direction = MainFragmentDirections
-            .actionMainFragmentToDetailsFragment(
+        val direction = MainFragmentDirections.actionMainFragmentToDetailsFragment(
                 item.id!!
             )
 
-        Navigation.findNavController(requireView())
-            .navigate(direction)
+        Navigation.findNavController(requireView()).navigate(direction)
 
 
     }
 
     override fun onClickLike(item: TeeDisplayModel) {
-        val newItem = LikeModel(item.id, auth.currentUser!!.uid, item.brand, item.description, item.imageUrl, item.name, item.price)
+        val newItem = LikeModel(
+            item.id,
+            auth.currentUser!!.uid,
+            item.brand,
+            item.description,
+            item.imageUrl,
+            item.name,
+            item.price
+        )
 
         // Before adding, check if the ID already exists in the favorites list
         val query = likeDBRef.whereEqualTo("pid", newItem.pid)
 
-        query.get()
-            .addOnSuccessListener { querySnapshot ->
+        query.get().addOnSuccessListener { querySnapshot ->
                 if (querySnapshot.isEmpty) {
                     // ID does not exist, perform add to collection
-                    likeDBRef.add(newItem)
-                        .addOnSuccessListener {
+                    likeDBRef.add(newItem).addOnSuccessListener {
                             requireActivity().toast("Đã thêm vào mục yêu thích")
-                        }
-                        .addOnFailureListener {
+                        }.addOnFailureListener {
                             requireActivity().toast("Thêm vào mục yêu thích thất bại")
                         }
                 } else {
                     // ID already exists, notify user
                     requireActivity().toast("Sản phẩm đã tồn tại trong mục yêu thích")
                 }
-            }
-            .addOnFailureListener {
+            }.addOnFailureListener {
                 requireActivity().toast("Kiểm tra thất bại")
             }
 
     }
-
 
 
 }

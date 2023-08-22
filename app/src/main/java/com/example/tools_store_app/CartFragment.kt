@@ -6,6 +6,7 @@ import com.example.tools_store_app.Models.CartModel
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -63,11 +64,17 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
 
         binding.btnCartCheckout.setOnClickListener {
 
-            requireActivity().toast("Whooooa!! Giá trị đơn hàng của bạn là ${totalPrice}\n và đơn hàng sẽ giao đến bạn trong 7 ngày tiếp theo")
-            cartList.clear()
-            binding.tvLastSubTotalprice.text ="0"
-            binding.tvLastTotalPrice.text ="Cần ít nhất 1 sản phẩm"
-            binding.tvLastTotalPrice.setTextColor(Color.RED)
+            if(cartList.size > 0){
+                requireActivity().toast("Whooooa!! Giá trị đơn hàng của bạn là ${totalPrice}\n và đơn hàng sẽ giao đến bạn trong 7 ngày tiếp theo")
+                cartList.clear()
+            }
+
+            else{
+                binding.tvLastTotalPrice.text ="Cần ít nhất 1 sản phẩm để thanh toán"
+                binding.tvLastTotalPrice.textSize = 10f
+                binding.tvLastTotalPrice.setTextColor(Color.RED)
+            }
+
             // TODO: remove the data of the Products from the fireStore after checkout or insert a boolean isDelivered
             adapter.notifyDataSetChanged()
         }
@@ -90,6 +97,7 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
 
 
                     cartList.add(cartProduct)
+
                     subTotalPrice += cartProduct.price!!.toInt()
                     totalPrice += cartProduct.price!!.toInt()
 
@@ -99,7 +107,7 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
                     binding.tvLastSubTotalprice.text = "${subTotalPrice.toString()} VND"
                     binding.tvLastTotalPrice.text = "${totalPrice.toString()} VND"
                     binding.tvShippingPrice.text = "${shippingPrice.toString()} VND"
-                    binding.tvLastSubTotalItems.text = "Giá tiền của ${cartList.size} sản phẩm"
+                    binding.tvLastSubTotalItems.text = "Tổng tiền ${cartList.size} sản phẩm"
                     adapter.notifyDataSetChanged()
 
 
@@ -114,7 +122,6 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
     }
 
     override fun onLongRemove(item: CartModel , position:Int) {
-
 
         orderDatabaseReference
             .whereEqualTo("uid",item.uid)
@@ -140,6 +147,8 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
 
 
     }
+
+
 
 
 

@@ -1,18 +1,20 @@
 package com.example.tools_store_app.rvadapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.tools_store_app.CartFragment
 import com.example.tools_store_app.Models.CartModel
 import com.example.tools_store_app.SwipeToDelete
 import com.example.tools_store_app.databinding.CartProductItemBinding
 
 class CartAdapter(
-    private val context : Context,
+    private val context: Context,
     private val list:ArrayList<CartModel>,
-    private val onLongClickRemove: OnLongClickRemove
+    private val onLongClickRemove: OnLongClickRemove,
 ):RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
 
@@ -50,21 +52,35 @@ class CartAdapter(
         var count = holder.binding.tvCartItemCount.text.toString().toInt()
 
         holder.binding.btnCartItemAdd.setOnClickListener {
-            count++
-            // TODO: Update Quantity in Database also
-            holder.binding.tvCartItemCount.text = count.toString()
+            if(count < 5){
+                count++
+                val newPrice = (currentItem.price)!!.toInt() * count
+
+                // TODO: Update Quantity in Database also
+                holder.binding.tvCartItemCount.text = count.toString()
+                holder.binding.tvCartProductPrice.text = "${newPrice} VND"
+
+
+            }
 
         }
 
         holder.binding.btnCartItemMinus.setOnClickListener {
-            count--
-            // TODO: Update Quantity in Database also
-            holder.binding.tvCartItemCount.text = count.toString()
+            if(count > 1){
+                count--
+                val newPrice = (currentItem.price)!!.toInt() * count
+
+                // TODO: Update Quantity in Database also
+                holder.binding.tvCartItemCount.text = count.toString()
+                holder.binding.tvCartProductPrice.text = "${newPrice} VND"
+
+            }
         }
 
         holder.itemView.setOnLongClickListener {
             onLongClickRemove.onLongRemove(currentItem , position)
             true
+
         }
 
 
@@ -78,6 +94,7 @@ class CartAdapter(
     interface OnLongClickRemove{
         fun onLongRemove(item:CartModel , position: Int)
     }
+
 
 
 

@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
+
+    <!--    MAIN FRAGMENT NAV  -->
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.tools_store_app.MainFragment"
@@ -22,7 +24,13 @@
         <action
             android:id="@+id/action_mainFragment_to_likeFragment"
             app:destination="@id/likeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
+
+
+    <!--    DETAILS FRAGMENT NAV  -->
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.tools_store_app.DetailsFragment"
@@ -35,10 +43,31 @@
             app:argType="string"
             android:defaultValue="null" />
     </fragment>
+
+
+    <!--    CART FRAGMENT NAV  -->
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.example.tools_store_app.CartFragment"
         android:label="CartFragment" />
+
+    <!--    PROFILE FRAGMENT NAV  -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.tools_store_app.ProfileFragment"
+        android:label="ProfileFragment">
+
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+
+        <action
+            android:id="@+id/action_profileFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+
+    <!--    LOGIN FRAGMENT NAV  -->
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.tools_store_app.LoginFragment"
@@ -50,6 +79,9 @@
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
     </fragment>
+
+
+    <!--    REGISTER FRAGMENT NAV  -->
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.tools_store_app.RegisterFragment"
@@ -61,6 +93,9 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+
+
+    <!--    LIKE FRAGMENT NAV  -->
     <fragment
         android:id="@+id/likeFragment"
         android:name="com.example.tools_store_app.LikeFragment"
@@ -72,4 +107,7 @@
             android:id="@+id/action_likeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
+
+
+
 </navigation>

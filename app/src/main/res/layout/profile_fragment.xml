@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp"
+            android:layout_margin="15dp"
             android:background="@drawable/border">
 
             <LinearLayout
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_person_24"
-                    android:padding="11dp"
+                    android:padding="5dp"
                     android:backgroundTint="@color/black"/>
 
                 <TextView
@@ -58,8 +58,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Thông tin tài khoản"
-                    android:padding="10dp"
-                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
 
             </LinearLayout>
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_drive_file_rename_outline_24"
-                    android:padding="11dp"
+                    android:padding="2dp"
                     android:backgroundTint="@color/black"/>
 
                 <TextView
@@ -82,8 +82,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tên: "
-                    android:padding="10dp"
-                    android:textSize="18sp"
+                    android:padding="2dp"
+                    android:textSize="16sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -91,8 +91,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="10dp"
-                    android:textSize="18sp"
+                    android:padding="2dp"
+                    android:textSize="16sp"
                     tools:text="User Name" />
             </LinearLayout>
 
@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_mail_outline_24"
-                    android:padding="11dp"
+                    android:padding="2dp"
                     android:backgroundTint="@color/black"/>
 
                 <TextView
@@ -113,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email: "
-                    android:padding="10dp"
+                    android:padding="2dp"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="10dp"
+                    android:padding="2dp"
                     android:textSize="18sp"
                     tools:text="user@gmail.com" />
             </LinearLayout>
@@ -136,15 +136,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_date_range_24"
-                    android:padding="11dp"
+                    android:padding="2dp"
                     android:backgroundTint="@color/black"/>
 
                 <TextView
                     android:id="@+id/tvEmail2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ngày tham gia: "
-                    android:padding="10dp"
+                    android:text="Tham gia từ: "
+                    android:padding="2dp"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
@@ -153,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="10dp"
+                    android:padding="2dp"
                     android:textSize="18sp"
                     tools:text="14/11/2023" />
             </LinearLayout>
@@ -164,60 +164,65 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
 
             android:weightSum="2"
             >
 
             <FrameLayout
-                android:layout_width="100dp"
-                android:layout_height="150dp"
+                android:id="@+id/btnCheckOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/custom_order_background"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_margin="10dp"
-                android:layout_gravity="center">
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:clickable="true">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/blur_bg_1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/blur_bg_1" />
 
                 <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="60dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="40dp"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:text="Kiểm tra đơn hàng"
                     android:textAlignment="center"
-                    android:textSize="22sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="100dp"
-                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/custom_order_background"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_margin="10dp"
-                android:layout_gravity="center">
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:clickable="true">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/blur_bg_1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/blur_bg_1" />
 
                 <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="25dp"
+                    android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:text="Khác"
                     android:textAlignment="center"
-                    android:textSize="22sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
             </FrameLayout>
         </LinearLayout>
@@ -255,7 +260,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.88" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

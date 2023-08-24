@@ -102,9 +102,9 @@ class MainFragment : Fragment(R.layout.main_fragment), CategoryOnClickInterface,
 
                 R.id.profileFragment -> {
 
-                    auth.signOut()
+//                    auth.signOut()
                     Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
-                        .navigate(R.id.action_mainFragment_to_loginFragment)
+                        .navigate(R.id.action_mainFragment_to_profileFragment)
                     true
                 }
 

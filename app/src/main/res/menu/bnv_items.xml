@@ -22,7 +22,7 @@
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
-        android:icon="@drawable/logout_svg"
-        android:title="Trang cá nhân" />
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Tôi" />
 
 </menu>

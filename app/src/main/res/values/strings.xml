@@ -9,4 +9,5 @@
     <string name="login_now">Đã có tài khoản ? Đăng nhập ngay</string>
     <string name="tee_details">Áo thun tay ngắn làm bằng chất liệu 100% cotton thoáng mát</string>
     <string name="checkout">Thanh toán</string>
+    <string name="logout">Đăng xuất</string>
 </resources>

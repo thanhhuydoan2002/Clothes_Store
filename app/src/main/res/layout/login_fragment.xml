@@ -107,6 +107,7 @@
         android:layout_height="wrap_content"
         android:text="@string/register_now"
         android:layout_marginTop="10dp"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/etPasswordLogin"
         app:layout_constraintStart_toStartOf="@+id/etPasswordLogin"

@@ -78,7 +78,6 @@
                     android:backgroundTint="@color/black"/>
 
                 <TextView
-                    android:id="@+id/tvEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tên: "
@@ -87,12 +86,12 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/tvEmailInfo"
+                    android:id="@+id/tvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="2dp"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     tools:text="User Name" />
             </LinearLayout>
 
@@ -109,7 +108,6 @@
                     android:backgroundTint="@color/black"/>
 
                 <TextView
-                    android:id="@+id/tvEmail1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email: "
@@ -118,12 +116,12 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/tvEmailInfo1"
+                    android:id="@+id/tvEmailInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="2dp"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     tools:text="user@gmail.com" />
             </LinearLayout>
 
@@ -140,7 +138,7 @@
                     android:backgroundTint="@color/black"/>
 
                 <TextView
-                    android:id="@+id/tvEmail2"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tham gia từ: "
@@ -149,12 +147,12 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/tvEmailInfo2"
+                    android:id="@+id/tvCreatedDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="2dp"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     tools:text="14/11/2023" />
             </LinearLayout>
 

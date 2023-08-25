@@ -11,6 +11,9 @@ import com.example.tools_store_app.databinding.RegisterFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class RegisterFragment : Fragment(R.layout.register_fragment) {
 
@@ -25,6 +28,7 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
 
         binding = RegisterFragmentBinding.bind(view)
         auth = FirebaseAuth.getInstance()
+
 
 
 
@@ -56,6 +60,8 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
     }
 
     private fun createUser(email: String, password: String, userModel: UserModel) {
+        val sdf = SimpleDateFormat("dd/MM/yy", Locale.getDefault())
+        val currentDate = sdf.format(Date()) // Get current time and format it
 
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {task ->
@@ -65,6 +71,7 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
                     if (uid != null) {
 
                         userModel.uid = uid
+                        userModel.createdDate = currentDate // Assign creation time
 
                         saveUserData(userModel)
 

@@ -6,13 +6,17 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.tools_store_app.Extensions.toast
+import com.example.tools_store_app.Models.UserModel
 import com.example.tools_store_app.databinding.RegisterFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class RegisterFragment : Fragment(R.layout.register_fragment) {
 
     private lateinit var binding: RegisterFragmentBinding
     private lateinit var auth : FirebaseAuth
+    private var userDBRef = Firebase.firestore.collection("users")
 
 
 
@@ -32,11 +36,18 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
                 binding.etPasswordRegister.text.isNotEmpty()
             ) {
 
-                createUser(binding.etEmailRegister.text.toString(),binding.etPasswordRegister.text.toString())
+                val userModel = UserModel(
+                    uname = binding.etNameRegister.text.toString(),
+                    email = binding.etEmailRegister.text.toString(),
+                )
+
+                createUser(binding.etEmailRegister.text.toString(),binding.etPasswordRegister.text.toString(),userModel)
 
 
             }
         }
+
+
         binding.tvNavigateToLogin.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_loginFragment)
         }
@@ -44,17 +55,27 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
 
     }
 
-    private fun createUser(email: String, password: String) {
+    private fun createUser(email: String, password: String, userModel: UserModel) {
 
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {task ->
                 if(task.isSuccessful){
+                    val uid = task.result?.user?.uid
 
-                    requireActivity().toast("Đăng ký tài khoản thành công")
+                    if (uid != null) {
 
-                    Navigation.findNavController(requireView())
-                        .navigate(R.id.action_registerFragment_to_mainFragment)
+                        userModel.uid = uid
 
+                        saveUserData(userModel)
+
+                        requireActivity().toast("Đăng ký tài khoản thành công")
+
+                        Navigation.findNavController(requireView())
+                            .navigate(R.id.action_registerFragment_to_mainFragment)
+
+                    } else {
+                        requireActivity().toast("Không thể lấy UID của người dùng")
+                    }
                 }
                 else{
                     requireActivity().toast(task.exception!!.localizedMessage)
@@ -62,6 +83,25 @@ class RegisterFragment : Fragment(R.layout.register_fragment) {
 
             }
 
+    }
+
+    private fun saveUserData(userModel: UserModel) {
+        val uid = userModel.uid
+
+        if (uid != null) {
+            userDBRef
+                .document(uid)
+                .set(userModel)
+                .addOnSuccessListener {
+                    // Success
+                }
+                .addOnFailureListener {
+                    // Fail
+                    Toast.makeText(requireContext(), "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            Toast.makeText(requireContext(), "Không có UID để lưu thông tin", Toast.LENGTH_SHORT).show()
+        }
     }
 
 

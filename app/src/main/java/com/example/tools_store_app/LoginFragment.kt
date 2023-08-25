@@ -37,7 +37,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
             ) {
 
 
-                signinUser(binding.etEmailLogin.text.toString(),
+                loginUser(binding.etEmailLogin.text.toString(),
                     binding.etPasswordLogin.text.toString())
 
 
@@ -55,7 +55,7 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
 
     }
 
-    private fun signinUser(email: String, password: String) {
+    private fun loginUser(email: String, password: String) {
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->

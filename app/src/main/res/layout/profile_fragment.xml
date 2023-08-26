@@ -161,20 +161,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-
-            android:weightSum="2"
-            >
+            android:orientation="horizontal">
 
             <FrameLayout
                 android:id="@+id/btnCheckOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@drawable/custom_order_background"
+                android:background="@drawable/border"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_margin="5dp"
+                android:layout_margin="15dp"
                 android:layout_gravity="center"
                 android:clickable="true">
 
@@ -190,39 +186,12 @@
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
                     android:padding="10dp"
-                    android:text="Kiểm tra đơn hàng"
+                    android:text="Đơn hàng của tôi"
                     android:textAlignment="center"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
             </FrameLayout>
 
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_order_background"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_margin="5dp"
-                android:layout_gravity="center"
-                android:clickable="true">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/blur_bg_1" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:padding="10dp"
-                    android:text="Khác"
-                    android:textAlignment="center"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
         </LinearLayout>
     </LinearLayout>
 

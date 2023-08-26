@@ -1,6 +1,4 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Layer 1: Hình ảnh gốc -->
-    <item android:drawable="@drawable/ic_baseline_edit_note_24" />
 
     <!-- Layer 2: Gradient drawable để tạo hiệu ứng mờ -->
     <item>

@@ -6,7 +6,6 @@ import com.example.tools_store_app.Models.CartModel
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -32,6 +31,8 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
 
 
     private var orderDatabaseReference = Firebase.firestore.collection("orders")
+    private var cartDatabaseReference = Firebase.firestore.collection("cart")
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,19 +54,22 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
 
 
 
+
         adapter = CartAdapter(requireContext(),cartList ,this)
         binding.rvCartItems.adapter = adapter
         binding.rvCartItems.layoutManager = layoutManager
 
 
 
-
-
-
         binding.btnCartCheckout.setOnClickListener {
+
+
 
             if(cartList.size > 0){
                 requireActivity().toast("Whooooa!! Giá trị đơn hàng của bạn là ${totalPrice}\n và đơn hàng sẽ giao đến bạn trong 7 ngày tiếp theo")
+
+                //add vao order
+
                 cartList.clear()
             }
 
@@ -84,17 +88,15 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
 
 
 
-
     @SuppressLint("SuspiciousIndentation")
     private fun retrieveCartItems() {
-
-        orderDatabaseReference
+        cartDatabaseReference
             .whereEqualTo("uid",auth.currentUser!!.uid)
             .get()
             .addOnSuccessListener { querySnapshot ->
                 for (item in querySnapshot) {
+                    // each
                     val cartProduct = item.toObject<CartModel>()
-
 
                     cartList.add(cartProduct)
 
@@ -123,7 +125,7 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
 
     override fun onLongRemove(item: CartModel , position:Int) {
 
-        orderDatabaseReference
+        cartDatabaseReference
             .whereEqualTo("uid",item.uid)
             .whereEqualTo("pid",item.pid)
             .whereEqualTo("size",item.size)
@@ -131,7 +133,7 @@ class CartFragment : Fragment(R.layout.cart_fragment), CartAdapter.OnLongClickRe
             .addOnSuccessListener { querySnapshot ->
 
                 for (item in querySnapshot){
-                    orderDatabaseReference.document(item.id).delete()
+                    cartDatabaseReference.document(item.id).delete()
                     cartList.removeAt(position)
                     adapter.notifyItemRemoved(position)
 

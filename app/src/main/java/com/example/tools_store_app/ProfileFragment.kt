@@ -28,7 +28,7 @@ class ProfileFragment: Fragment(R.layout.profile_fragment) {
         auth = FirebaseAuth.getInstance()
 
 
-        binding.likeActualToolbar.setNavigationOnClickListener {
+        binding.profileActualToolbar.setNavigationOnClickListener {
             Navigation.findNavController(requireView()).popBackStack()
         }
 

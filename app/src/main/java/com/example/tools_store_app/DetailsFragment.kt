@@ -8,7 +8,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.tools_store_app.Extensions.toast
-import com.example.tools_store_app.Models.ProductOrderModel
+import com.example.tools_store_app.Models.ProductCartModel
 import com.example.tools_store_app.rvadapters.SizeAdapter
 import com.example.tools_store_app.rvadapters.SizeOnClickInterface
 import com.example.tools_store_app.Models.TeeDisplayModel
@@ -17,10 +17,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class DetailsFragment : Fragment(R.layout.product_details_fragment), SizeOnClickInterface {
 
@@ -31,6 +27,8 @@ class DetailsFragment : Fragment(R.layout.product_details_fragment), SizeOnClick
     private val args: DetailsFragmentArgs by navArgs()
 
     private val orderDatabaseReference = Firebase.firestore.collection("orders")
+    private var cartDatabaseReference = Firebase.firestore.collection("cart")
+
 
     private lateinit var currentUID :  String
     private lateinit var orderImageUrl:String
@@ -120,12 +118,12 @@ class DetailsFragment : Fragment(R.layout.product_details_fragment), SizeOnClick
 
             // TODO: Add Data to FireBase FireStore Database
 
-            val orderedProduct = ProductOrderModel(currentUID,productId,orderImageUrl,orderName,orderSize,orderQuantity,orderPrice)
+            val cartProduct = ProductCartModel(currentUID,productId,orderImageUrl,orderName,orderSize,orderQuantity,orderPrice)
 
             if(orderSize.isNullOrBlank()){
                 requireActivity().toast("Chọn kích cỡ")
             }else{
-                addDataToOrdersDatabase(orderedProduct)
+                addDataToCartDatabase(cartProduct)
 
                 Navigation.findNavController(view).navigate(R.id.action_detailsFragment_to_cartFragment)
             }
@@ -135,11 +133,11 @@ class DetailsFragment : Fragment(R.layout.product_details_fragment), SizeOnClick
 
     }
 
-    private fun addDataToOrdersDatabase(orderedProduct: ProductOrderModel) {
+    private fun addDataToCartDatabase(orderedProduct: ProductCartModel) {
 
-        orderDatabaseReference.add(orderedProduct).addOnCompleteListener{task ->
+        cartDatabaseReference.add(orderedProduct).addOnCompleteListener{task ->
             if(task.isSuccessful){
-                requireActivity().toast("Đơn hàng đã được giao thành công")
+                requireActivity().toast("Đã thêm vào giỏ hàng")
             }else{
                 requireActivity().toast(task.exception!!.localizedMessage!!)
             }

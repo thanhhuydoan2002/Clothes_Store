@@ -30,6 +30,7 @@ class MainFragment : Fragment(R.layout.main_fragment), CategoryOnClickInterface,
 
     private lateinit var binding: MainFragmentBinding
     private lateinit var databaseReference: DatabaseReference
+
     private lateinit var productList: ArrayList<TeeDisplayModel>
     private lateinit var categoryList: ArrayList<String>
     private lateinit var productsAdapter: TeeDisplayAdapter

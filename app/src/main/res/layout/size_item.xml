@@ -7,8 +7,8 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSizeItem"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_margin="5dp"
         android:padding="5dp"
         android:background="@drawable/custom_button_select_size"

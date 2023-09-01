@@ -56,7 +56,7 @@
     <LinearLayout
         android:id="@+id/llBottomDetails"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/custom_bnv"
         android:elevation="10dp"
         android:orientation="vertical"
@@ -76,7 +76,7 @@
             android:text="Áo thun màu cam Áo thun màu cam"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="22sp"/>
+            android:textSize="23sp"/>
 
 
         <TextView
@@ -85,6 +85,7 @@
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:padding="3dp"
+            android:textSize="16sp"
             android:text="@string/tee_details"
             android:textColor="@color/greyishtext" />
 
@@ -93,7 +94,8 @@
             android:layout_height="wrap_content"
             android:text="Chọn kích cỡ"
             android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -108,7 +110,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -122,7 +125,7 @@
                     android:padding="3dp"
                     android:text="Giá"
                     android:textColor="@color/greyishtext"
-                    android:textSize="15sp" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/tvDetailsProductPrice"
@@ -130,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:text="10000 VND"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
             </LinearLayout>
@@ -141,9 +144,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:background="@drawable/custom_button"
-                android:padding="5dp"
+                android:padding="10dp"
 
-                android:textSize="15sp"
+                android:textSize="18sp"
                 android:text="Thêm vào giỏ hàng"
                 android:textColor="@color/white" />
 
@@ -183,7 +186,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

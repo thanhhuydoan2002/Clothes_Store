@@ -1,6 +1,6 @@
-# Tee Shirt E-Commerce App
+# Tee Shirt Store App
 
-Simple Tee Shirt ordering App created with FireBase as backend
+Simple Vietnamese Tee Shirt ordering App created with FireBase as backend
 
 ## Description
 
@@ -12,10 +12,14 @@ This app has currently Five main Features
 * Product Detail Page - where you choose size of the shoes and Add Product to the created
 * Displaying Cart Item Products From FireStore
 
+## Screenshots
+
+<a href="https://postimg.cc/68VhhtY5" target="_blank"><img src="https://i.postimg.cc/QdwnhM75/Screenshot-20230901-125420.png" alt="login"/></a><br/><br/>
+
 ## Tech Stack Used
 
 * Firebase Email Authentication
-* Firebase Realtime DataBase
+* Firebase Realtime Database
 * Firebase Firestore
 
 
